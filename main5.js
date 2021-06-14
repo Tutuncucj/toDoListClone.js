@@ -1,17 +1,23 @@
 let formDOM = document.querySelector("#formList")  // form listesini çağırdık
  formDOM.addEventListener('submit', formHandler)
 
+let writeDOM = document.querySelector ("#write")   // localstorage için input çağırdık
+write = localStorage.getItem('write') ? Number(localStorage.getItem('write')) : 0 //değeri nerden alacağını belirtik
+                               
+
 function formHandler (event) {                 
-    event.preventDefault();             // sayfa yenilenmesine izin vermedik
+    event.preventDefault();                                                // sayfa yenilenmesine izin vermedik
     const writeDOM = document.querySelector ("#write")   // inputu çağırdık
     if (writeDOM.value) {                                // eğer bilgi varsa diye koşul koyduk
         addItem(writeDOM.value)                          // additem fonksiyonunu çalıştırdık.
         writeDOM.value = "" 
         alert ("succes")                            // input değeri sıfırladık.
-    } else 
-        alert("You must write something!");
-    
+    } else {
+        alert("You must write something!");                
+    } 
+   
 
+    
     let close = document.getElementsByClassName("close");       // close classını çağırdık
     let i;                                
     for (i = 0; i < close.length; i++) {                 //döngü oluşturduk 
@@ -39,7 +45,8 @@ function addItem (write) {                            // addıtem fonsiyonunu ya
     let spanDOM = document.createElement ('span');       //li ve span oluşturduk
     spanDOM.className = "close"                          //spana close clasını yerleştirdik 
     liDOM.innerHTML =`${write} <span class="close">×</span>`       //liste içine gelecekleri yazdık
-    ulDOM.append(liDOM)                                           //li listenin sonuna yerleştirdik
+    ulDOM.append(liDOM)                                                //li listenin sonuna yerleştirdik
+    localStorage.setItem('write', write)                             // storage kurduk.        
 }
 
 
@@ -52,3 +59,14 @@ listDOM.addEventListener("click", function (checked) {                // ul dinl
 
 
 
+$(document).ready(function() {
+ 
+   ({
+        heading: 'Information',
+        text: 'Yeni Mesajınız var lütfen mesaj kutunuzu kontrol ediniz. <a href="#">tıklayın</a>',
+        position: 'mid-center',
+        icon: 'info',
+        stack: false
+    })
+     
+        });
