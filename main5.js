@@ -2,15 +2,15 @@ let formDOM = document.querySelector("#formList")  // form listesini çağırdı
  formDOM.addEventListener('submit', formHandler)
 
 let writeDOM = document.querySelector ("#write")   // localstorage için input çağırdık
-write = localStorage.getItem('write') ? Number(localStorage.getItem('write')) : 0 //değeri nerden alacağını belirtik
-                               
+list = localStorage.getItem('list') ? Number(localStorage.getItem('list')) : 0 //değeri nerden alacağını belirtik
+             
 
 function formHandler (event) {                 
     event.preventDefault();                                                // sayfa yenilenmesine izin vermedik
     const writeDOM = document.querySelector ("#write")   // inputu çağırdık
     if (writeDOM.value) {                                // eğer bilgi varsa diye koşul koyduk
         addItem(writeDOM.value)                          // additem fonksiyonunu çalıştırdık.
-        writeDOM.value = "" 
+        // writeDOM.value = "" 
         alert ("succes")                            // input değeri sıfırladık.
     } else {
         alert("You must write something!");                
@@ -59,14 +59,3 @@ listDOM.addEventListener("click", function (checked) {                // ul dinl
 
 
 
-$(document).ready(function() {
- 
-   ({
-        heading: 'Information',
-        text: 'Yeni Mesajınız var lütfen mesaj kutunuzu kontrol ediniz. <a href="#">tıklayın</a>',
-        position: 'mid-center',
-        icon: 'info',
-        stack: false
-    })
-     
-        });
